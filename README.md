@@ -12,6 +12,7 @@ Build and install these libraries
 ```
 $ https://github.com/TartanLlama/expected.git
 $ https://github.com/ericniebler/range-v3.git
+$ https://github.com/rollbear/dry-comparisons.git (header-only)
 ```
 
 ### Build an application
