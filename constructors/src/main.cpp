@@ -10,6 +10,7 @@
 #include <iostream>
 #include <vector>
 #include <optional>
+#include <tl/expected.hpp>
 
 using std::cout;
 using std::endl;
@@ -69,10 +70,26 @@ public:
 Names getName()
 {
   Names nme("ABC");
-  return std::move(nme);
+  return nme;
 }
 
 std::string BuildString(int number)
+{
+  std::string s { " Super Long Builder: " };
+  s += std::to_string(number);
+  cout << &s << ", data: " << static_cast<void *>(s.data())  << '\n';
+  return s;
+}
+
+std::optional<std::string> BuildStringWithOptional(int number)
+{
+  std::string s { " Super Long Builder: " };
+  s += std::to_string(number);
+  cout << &s << ", data: " << static_cast<void *>(s.data())  << '\n';
+  return s;
+}
+
+tl::expected<std::string, int> BuildStringWithExpected(int number)
 {
   std::string s { " Super Long Builder: " };
   s += std::to_string(number);
@@ -107,9 +124,21 @@ int main()
   // Names temp("ABC");
   // tassigned = std::move(temp);
 
+  // Run single instance of BuildString...
+  cout << "\nBuildString" << endl;
   auto str42 = BuildString(42);
+  cout << &(str42) << ", data: " << static_cast<void *>(str42.data())  << '\n';
+  cout << "\nBuildStringWithOptional"<<endl;
 
-  cout << &str42 << ", data: " << static_cast<void *>(str42.data())  << '\n';
+  auto str36 = BuildStringWithOptional(36);
+  cout << &(str36.value()) << ", data: " << static_cast<void *>(str36.value().data())  << '\n';
 
+  cout << "\nBuildStringWithExpected"<<endl;
+  auto str24 = BuildStringWithExpected(24);
+  cout << &(str24.value()) << ", data: " << static_cast<void *>(str24.value().data())  << '\n' << std::endl;
+
+  cout << "If entries in 1st column and entries in 2nd column match RVO (copy elision + move semantics) was performed (full optimization)" << endl;
+  cout << "If only data entries are equal then just move semantics was performed (some optimization)" << endl;
+  cout << "If no entries are equal data was copied and not moved (no optimization)" << endl;
   return 0;
 }
