@@ -17,7 +17,7 @@ struct Point
     double y;
 };
 
-double norm(Point const& point)
+double norm(const Point& point)
 {
     return sqrt(point.x * point.x + point.y * point.y);
 }
@@ -30,5 +30,10 @@ int main()
   const auto areNormsCorrect = myNorms == std::vector<double>{5, 10, 15};
 
   const auto areMyNormsCorrect = (myPoints | ranges::view::transform(norm) | ranges::to_vector) == std::vector<double>{5, 10, 15};
+
+  for (const auto & A : myPoints | ranges::view::reverse)
+  {
+    std::cout << A.x << " " << A.y << std::endl;
+  }
   return 0;
 }

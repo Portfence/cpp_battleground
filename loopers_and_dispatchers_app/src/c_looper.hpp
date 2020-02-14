@@ -83,6 +83,7 @@ public:
       {
         return false;
       }
+      return true;
     }
 
     std::shared_ptr<CDispatcher> getDispatcher()

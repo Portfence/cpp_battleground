@@ -54,13 +54,16 @@ constexpr int multiply_with_three(const int input)
   return input*3;
 }
 
-struct Output{
+struct Output
+{
   int a, b, c;
 };
+
 struct Input
 {
   int x, y, z;
 };
+
 enum Error
 {
   UNKNOWN,
@@ -138,10 +141,10 @@ int main()
   }
 
   { // tl::expected: map() and_then() performs a series of task and result is valid if all succedes
-    auto result = find_solution(12)         // Try to find solution for input argument. Error and return unexpected if it fails.
-                  .map(multiply_with_two)   // If successful, pass the returned value as argument to 'multiply_with_two'.
-                  .map(multiply_with_three) // Pass returned value from previous function as argument to 'multiply_with_three'.
-                  .and_then(find_solution); // Try to find a solution with returned value from previous function. Return result it successfull. Return unexpected otherwise
+    tl::expected<int, std::string> result = find_solution(12)         // Try to find solution for input argument. Error and return unexpected if it fails.
+                                            .map(multiply_with_two)   // If successful, pass the returned value as argument to 'multiply_with_two'.
+                                            .map(multiply_with_three) // Pass returned value from previous function as argument to 'multiply_with_three'.
+                                            .and_then(find_solution); // Try to find a solution with returned value from previous function. Return result it successfull. Return unexpected otherwise
 
     // A single error handling case for all function calls above
     if (result)
