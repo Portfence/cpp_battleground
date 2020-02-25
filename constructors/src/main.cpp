@@ -19,7 +19,7 @@ class Names
 private:
   std::string* name;
 public:
-  Names(std::string place_name)
+  Names(const std::string& place_name)
   {
     cout << "Overloaded constructor " << __PRETTY_FUNCTION__ << endl;
     name = new std::string;
@@ -33,7 +33,7 @@ public:
     *name = *cpy.name;
   }
 
-  Names& operator =(const Names& cpy)
+  Names& operator=(const Names& cpy)
   {
     cout << "Assignment operator " << __PRETTY_FUNCTION__ << endl;
     name = new std::string;
@@ -52,10 +52,9 @@ public:
   Names& operator=(Names&& cpy_move)
   {
     cout << "Move Assignment operator " << __PRETTY_FUNCTION__ << endl;
-    // delete name;
-    // name = cpy_move.name;
-    // cpy_move.name = nullptr;
-    name = std::move(cpy_move.name);
+    delete name;
+    name = cpy_move.name;
+    cpy_move.name = nullptr;
     return *this;
   }
 
