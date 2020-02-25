@@ -5,6 +5,8 @@ Contains:
 * loopers_and_dispatchers_app
 * optional_expected_app
 * ranges_app
+* strong_types_app
+* std_variant_app
 
 ### Pre-requisites for ```optional_expected_app``` and ```ranges_app```
 Build and install these libraries
