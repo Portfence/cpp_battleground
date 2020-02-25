@@ -4,7 +4,6 @@
  * @version 0.1
  * @date 2020-02-04
  *
- * @copyright Copyright (c) 2020
  *
  */
 #include <iostream>
