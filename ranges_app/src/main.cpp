@@ -35,5 +35,9 @@ int main()
   {
     std::cout << A.x << " " << A.y << std::endl;
   }
+
+  auto numbers = std::vector<int>{1, 2, 3, 4, 5, 6, 7, 8, 9 ,10};
+
+  ranges::view::for_each(numbers | ranges::view::take_while([](int i){ return i <= 5; }), [](int& i){ i *= 10; });
   return 0;
 }

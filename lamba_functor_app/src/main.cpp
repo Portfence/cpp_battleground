@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-// #include <ranges>
+#include <range>
 
 class Material {
 public:
@@ -72,7 +72,7 @@ int main()
   // std::copy_if(boxes.begin(), boxes.end(), std::back_inserter(goodBoxes), Resists(product)); // With functor
 
   // range STL iterator
-  // auto goodBoxes = boxes | ranges::view::filter(resists(product));
+  auto goodBoxes = boxes | ranges::view::filter(resists(product));
 
   return 0;
 }
