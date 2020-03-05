@@ -1,0 +1,21 @@
+add_executable(${PROJECT_NAME}
+  main.cpp
+  BasicCoffeeMachine.cpp
+  PremiumCoffeeMachine.cpp
+)
+
+target_include_directories(${PROJECT_NAME}
+  PRIVATE util
+)
+
+target_compile_features(${PROJECT_NAME}
+  PRIVATE cxx_std_20
+)
+
+target_link_libraries(${PROJECT_NAME}
+  # PRIVATE MyLibrary::MyLibrary
+)
+
+set_target_properties(${PROJECT_NAME}
+	PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+)
