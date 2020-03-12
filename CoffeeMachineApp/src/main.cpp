@@ -7,14 +7,12 @@
 class CoffeeApp
 {
 public:
-  CoffeeApp(ICoffeeMachine& t_coffeeMachine) : mCoffeeMachine(t_coffeeMachine)
-  {
+  CoffeeApp(IFilterCoffeeMachine& t_coffeeMachine) : mCoffeeMachine(t_coffeeMachine) {}
+  CoffeeApp(IEspressoMachine& t_coffeeMachine) : mCoffeeMachine(t_coffeeMachine) {}
 
-  }
-
-  std::optional<CoffeeDrink> prepareCoffee(const CoffeeSelection& selection)
+  std::optional<CoffeeDrink> prepareCoffee()
   {
-    std::optional<CoffeeDrink> coffee = mCoffeeMachine.brewCoffee(selection);
+    std::optional<CoffeeDrink> coffee = mCoffeeMachine.brewFilterCoffee();
     if (coffee)
     {
       PLOGI << "CoffeeDrink is ready!";
@@ -41,7 +39,7 @@ int main(int argc, char ** argv)
 
   CoffeeApp app(machine);
 
-  app.prepareCoffee(CoffeeSelection::FILTER_COFFEE);
+  app.prepareCoffee();
 
   return EXIT_SUCCESS;
 }

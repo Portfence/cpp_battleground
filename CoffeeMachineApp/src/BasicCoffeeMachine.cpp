@@ -13,15 +13,15 @@ BasicCoffeeMachine::BasicCoffeeMachine(std::map<CoffeeSelection, GroundCoffee>& 
   mConfigMap.insert(std::pair<CoffeeSelection, Configuration>(CoffeeSelection::FILTER_COFFEE, Configuration(30, 48, 0)));
 }
 
-std::optional<CoffeeDrink> BasicCoffeeMachine::brewCoffee(const CoffeeSelection& selection)
+std::optional<CoffeeDrink> BasicCoffeeMachine::brewFilterCoffee()
 {
-  std::optional<Configuration> config = helper::try_find(selection, mConfigMap);
+  std::optional<Configuration> config = helper::try_find(CoffeeSelection::FILTER_COFFEE, mConfigMap);
 
-  std::optional<GroundCoffee> groundCoffee = helper::try_find(selection, mGroundCoffee);
+  std::optional<GroundCoffee> groundCoffee = helper::try_find(CoffeeSelection::FILTER_COFFEE, mGroundCoffee);
 
   if (all_of{config.has_value(), groundCoffee.has_value()})
   {
-    return mBrewingUnit.brew(selection, groundCoffee.value(), config.value().getQuantityWater());
+    return mBrewingUnit.brew(CoffeeSelection::FILTER_COFFEE, groundCoffee.value(), config.value().getQuantityWater());
   }
   return std::nullopt;
 }

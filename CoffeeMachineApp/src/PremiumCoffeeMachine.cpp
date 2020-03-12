@@ -13,19 +13,14 @@ PremiumCoffeeMachine::PremiumCoffeeMachine(std::map<CoffeeSelection, CoffeeBean>
   mConfigMap.insert(std::pair<CoffeeSelection, Configuration>(CoffeeSelection::ESPRESSO, Configuration(30, 48, 0)));
 }
 
-std::optional<CoffeeDrink> PremiumCoffeeMachine::brewCoffee(const CoffeeSelection& selection)
+std::optional<CoffeeDrink> PremiumCoffeeMachine::brewFilterCoffee()
 {
-  std::optional<Configuration> config = helper::try_find(selection, mConfigMap);
+  return brewCoffee(CoffeeSelection::FILTER_COFFEE);
+}
 
-  std::optional<CoffeeBean> coffeeBean = helper::try_find(selection, mBeans);
-
-  if (all_of{config.has_value(), coffeeBean.has_value()})
-  {
-    GroundCoffee groundCoffee = mGrinder.grind(coffeeBean.value(), config.value().getCoffeeQuantity());
-
-    return mBrewingUnit.brew(selection, groundCoffee, config.value().getQuantityWater());
-  }
-  return std::nullopt;
+std::optional<CoffeeDrink> PremiumCoffeeMachine::brewEspresso()
+{
+  return brewCoffee(CoffeeSelection::ESPRESSO);
 }
 
 void PremiumCoffeeMachine::addCoffee(const CoffeeSelection& sel, const CoffeeBean& newBeans)
@@ -47,4 +42,19 @@ void PremiumCoffeeMachine::addCoffee(const CoffeeSelection& sel, const CoffeeBea
   {
     mBeans.insert(std::pair<CoffeeSelection, CoffeeBean>(sel, newBeans));
   }
+}
+
+std::optional<CoffeeDrink> PremiumCoffeeMachine::brewCoffee(const CoffeeSelection& selection)
+{
+  std::optional<Configuration> config = helper::try_find(selection, mConfigMap);
+
+  std::optional<CoffeeBean> coffeeBean = helper::try_find(selection, mBeans);
+
+  if (all_of{config.has_value(), coffeeBean.has_value()})
+  {
+    GroundCoffee groundCoffee = mGrinder.grind(coffeeBean.value(), config.value().getCoffeeQuantity());
+
+    return mBrewingUnit.brew(selection, groundCoffee, config.value().getQuantityWater());
+  }
+  return std::nullopt;
 }

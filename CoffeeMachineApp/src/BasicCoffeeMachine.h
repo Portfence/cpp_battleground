@@ -1,6 +1,6 @@
 #pragma once
 
-#include "interface/ICoffeeMachine.h"
+#include "interface/IFilterCoffeeMachine.h"
 #include "util/CoffeeDrink.hpp"
 #include "util/Configuration.h"
 #include "util/GroundCoffee.hpp"
@@ -9,12 +9,12 @@
 
 #include <map>
 
-class BasicCoffeeMachine : public ICoffeeMachine
+class BasicCoffeeMachine : public IFilterCoffeeMachine
 {
 public:
   explicit BasicCoffeeMachine(std::map<CoffeeSelection, GroundCoffee>& t_coffee);
   ~BasicCoffeeMachine() = default;
-  std::optional<CoffeeDrink> brewCoffee(const CoffeeSelection& selection) override;
+  std::optional<CoffeeDrink> brewFilterCoffee() override;
   void addCoffee(const CoffeeSelection& sel, const GroundCoffee& newCoffee);
 
 private:
