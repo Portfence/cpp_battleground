@@ -1,6 +1,7 @@
 #pragma once
 
 #include "WaterQuantity.hpp"
+#include "CoffeeQuantity.hpp"
 
 class Configuration
 {
@@ -10,5 +11,11 @@ public:
   {
     WaterQuantity w;
     return w;
+  }
+
+  CoffeeQuantity getCoffeeQuantity()
+  {
+    CoffeeQuantity q;
+    return q;
   }
 };

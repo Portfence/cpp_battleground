@@ -1,19 +1,47 @@
 #include "BasicCoffeeMachine.h"
+#include "helper/try_find.hpp"
 
+#include <plog/Log.h>
+#include <dry-comparisons.hpp>
+#include <optional>
 
-#include <map>
+using rollbear::all_of;
 
 BasicCoffeeMachine::BasicCoffeeMachine(std::map<CoffeeSelection, GroundCoffee>& t_coffee)
-  : mGroundCoffee(t_coffee)
+ : mGroundCoffee(t_coffee)
 {
   mConfigMap.insert(std::pair<CoffeeSelection, Configuration>(CoffeeSelection::FILTER_COFFEE, Configuration(30, 48, 0)));
 }
 
-Coffee BasicCoffeeMachine::brewCoffee(const CoffeeSelection& selection)
+std::optional<CoffeeDrink> BasicCoffeeMachine::brewCoffee(const CoffeeSelection& selection)
 {
-  auto it1 = mConfigMap.find(selection);
-  Configuration config = it1->second;
-  auto it2 = mGroundCoffee.find(selection);
-  GroundCoffee groundCoffee = it2->second;
-  return mBrewingUnit.brew(selection, groundCoffee, config.getQuantityWater());
+  std::optional<Configuration> config = helper::try_find(selection, mConfigMap);
+
+  std::optional<GroundCoffee> groundCoffee = helper::try_find(selection, mGroundCoffee);
+
+  if (all_of{config.has_value(), groundCoffee.has_value()})
+  {
+    return mBrewingUnit.brew(selection, groundCoffee.value(), config.value().getQuantityWater());
+  }
+  return std::nullopt;
+}
+
+void BasicCoffeeMachine::addCoffee(const CoffeeSelection& sel, const GroundCoffee& newCoffee)
+{
+  if (auto it = mGroundCoffee.find(sel); it != mGroundCoffee.end())
+  {
+    GroundCoffee& existingCoffee = it->second;
+    if (existingCoffee.getName() == newCoffee.getName())
+    {
+      existingCoffee.setQuantity(existingCoffee.getQuantity() + newCoffee.getQuantity());
+    }
+    else
+    {
+      throw std::invalid_argument("Only one kind of coffee supported for each CoffeeSelection");
+    }
+  }
+  else
+  {
+    mGroundCoffee.insert(std::pair<CoffeeSelection, GroundCoffee>(sel, newCoffee));
+  }
 }

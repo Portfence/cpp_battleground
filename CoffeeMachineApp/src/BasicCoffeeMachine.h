@@ -1,5 +1,7 @@
+#pragma once
+
 #include "interface/ICoffeeMachine.h"
-#include "util/Coffee.hpp"
+#include "util/CoffeeDrink.hpp"
 #include "util/Configuration.h"
 #include "util/GroundCoffee.hpp"
 #include "util/CoffeeSelection.hpp"
@@ -10,8 +12,10 @@
 class BasicCoffeeMachine : public ICoffeeMachine
 {
 public:
-  BasicCoffeeMachine(std::map<CoffeeSelection, GroundCoffee>& t_coffee);
-  Coffee brewCoffee(const CoffeeSelection& selection) override;
+  explicit BasicCoffeeMachine(std::map<CoffeeSelection, GroundCoffee>& t_coffee);
+  ~BasicCoffeeMachine() = default;
+  std::optional<CoffeeDrink> brewCoffee(const CoffeeSelection& selection) override;
+  void addCoffee(const CoffeeSelection& sel, const GroundCoffee& newCoffee);
 
 private:
   std::map<CoffeeSelection, Configuration> mConfigMap;

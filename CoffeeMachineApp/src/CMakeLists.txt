@@ -13,7 +13,7 @@ target_compile_features(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME}
-  # PRIVATE MyLibrary::MyLibrary
+  PRIVATE tl::expected
 )
 
 set_target_properties(${PROJECT_NAME}
