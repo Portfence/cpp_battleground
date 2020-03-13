@@ -14,7 +14,7 @@ class BasicCoffeeMachine : public ICoffeeMachine
 public:
   explicit BasicCoffeeMachine(std::map<CoffeeSelection, GroundCoffee>& t_coffee);
   ~BasicCoffeeMachine() = default;
-  std::optional<CoffeeDrink> brewCoffee(const CoffeeSelection& selection) override;
+  std::optional<CoffeeDrink> brewFilterCoffee() override;
   void addCoffee(const CoffeeSelection& sel, const GroundCoffee& newCoffee);
 
 private:

@@ -1,7 +1,6 @@
 #pragma once
 
-#include "CoffeeDrink.hpp"
-#include "CoffeeSelection.hpp"
+#include "util/CoffeeDrink.hpp"
 
 #include <optional>
 
@@ -9,5 +8,5 @@ class ICoffeeMachine
 {
 public:
   virtual ~ICoffeeMachine() = default;
-  virtual std::optional<CoffeeDrink> brewCoffee(const CoffeeSelection& selection) = 0;
+  virtual std::optional<CoffeeDrink> brewFilterCoffee() = 0;
 };
