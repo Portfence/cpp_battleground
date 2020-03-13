@@ -17,8 +17,7 @@ namespace helper
 template <typename Key, typename Value>
 static std::optional<Value> try_find(const Key& t_selection, const std::map<Key, Value>& t_map)
 {
-  auto it = t_map.find(t_selection);
-  if (it != t_map.end())
+  if (auto it = t_map.find(t_selection); it != t_map.end())
   {
     return it->second;
   }
