@@ -1,5 +1,6 @@
 # cpp_battleground
 Repository for testing and storing concepts GATHERED FROM OTHERS.
+
 Contains:
 * async_thread_app
 * lambda_functor_app
