@@ -1,5 +1,6 @@
 # cpp_battleground
-Repository for testing and storing concepts gathered from others.
+Repository for testing and storing concepts GATHERED FROM OTHERS.
+
 Contains:
 * async_thread_app
 * lambda_functor_app
@@ -8,6 +9,9 @@ Contains:
 * ranges_app
 * strong_types_app
 * std_variant_app
+* fmt_app
+* constructors
+* CoffeeMachineApp
 
 ### Pre-requisites for ```optional_expected_app``` and ```ranges_app```
 Build and install these libraries
