@@ -1,5 +1,5 @@
-#include "BasicCoffeeMachine.h"
-#include "PremiumCoffeeMachine.h"
+#include "models/BasicCoffeeMachine.h"
+#include "models/PremiumCoffeeMachine.h"
 
 #include <plog/Log.h>
 #include <plog/Appenders/ConsoleAppender.h>
@@ -7,21 +7,21 @@
 class CoffeeApp
 {
 public:
-  CoffeeApp(IFilterCoffeeMachine& t_coffeeMachine) : mCoffeeMachine(t_coffeeMachine) {}
-  CoffeeApp(IEspressoMachine& t_coffeeMachine) : mCoffeeMachine(t_coffeeMachine) {}
-
-  std::optional<CoffeeDrink> prepareCoffee()
+  CoffeeApp(IEspressoMachine& t_coffeeMachine) : mCoffeeMachine(t_coffeeMachine)
   {
-    std::optional<CoffeeDrink> coffee = mCoffeeMachine.brewFilterCoffee();
+
+  }
+
+  void prepareCoffee()
+  {
+    std::optional<CoffeeDrink> coffee = mCoffeeMachine.brewEspresso();
     if (coffee)
     {
       PLOGI << "CoffeeDrink is ready!";
-      return coffee;
     }
-    return std::nullopt;
   }
 private:
-  ICoffeeMachine& mCoffeeMachine;
+  IEspressoMachine& mCoffeeMachine;
 };
 
 int main(int argc, char ** argv)

@@ -1,11 +1,10 @@
 #pragma once
-#include "ICoffeeMachine.h"
-#include "CoffeeDrink.hpp"
-#include "CoffeeSelection.hpp"
+
+#include "util/CoffeeDrink.hpp"
 
 #include <optional>
 
-class IEspressoMachine : public ICoffeeMachine
+class IEspressoMachine
 {
 public:
   virtual ~IEspressoMachine() = default;

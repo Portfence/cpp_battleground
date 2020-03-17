@@ -1,6 +1,6 @@
 #pragma once
 
-#include "interface/IFilterCoffeeMachine.h"
+#include "interface/ICoffeeMachine.h"
 #include "interface/IEspressoMachine.h"
 #include "util/Configuration.h"
 #include "util/CoffeeBean.hpp"
@@ -10,7 +10,7 @@
 
 #include <map>
 
-class PremiumCoffeeMachine : public IFilterCoffeeMachine, IEspressoMachine
+class PremiumCoffeeMachine : public ICoffeeMachine, public IEspressoMachine
 {
 public:
   explicit PremiumCoffeeMachine(std::map<CoffeeSelection, CoffeeBean>& t_beans);
@@ -20,7 +20,7 @@ public:
   void addCoffee(const CoffeeSelection& sel, const CoffeeBean& newBeans);
 
 private:
-  std::optional<CoffeeDrink> brewCoffee(const CoffeeSelection& selection);
+  std::optional<CoffeeDrink> brewSelectedCoffee(const CoffeeSelection& selection);
 
 private:
   std::map<CoffeeSelection, Configuration> mConfigMap;

@@ -15,12 +15,12 @@ PremiumCoffeeMachine::PremiumCoffeeMachine(std::map<CoffeeSelection, CoffeeBean>
 
 std::optional<CoffeeDrink> PremiumCoffeeMachine::brewFilterCoffee()
 {
-  return brewCoffee(CoffeeSelection::FILTER_COFFEE);
+  return brewSelectedCoffee(CoffeeSelection::FILTER_COFFEE);
 }
 
 std::optional<CoffeeDrink> PremiumCoffeeMachine::brewEspresso()
 {
-  return brewCoffee(CoffeeSelection::ESPRESSO);
+  return brewSelectedCoffee(CoffeeSelection::ESPRESSO);
 }
 
 void PremiumCoffeeMachine::addCoffee(const CoffeeSelection& sel, const CoffeeBean& newBeans)
@@ -44,7 +44,7 @@ void PremiumCoffeeMachine::addCoffee(const CoffeeSelection& sel, const CoffeeBea
   }
 }
 
-std::optional<CoffeeDrink> PremiumCoffeeMachine::brewCoffee(const CoffeeSelection& selection)
+std::optional<CoffeeDrink> PremiumCoffeeMachine::brewSelectedCoffee(const CoffeeSelection& selection)
 {
   std::optional<Configuration> config = helper::try_find(selection, mConfigMap);
 

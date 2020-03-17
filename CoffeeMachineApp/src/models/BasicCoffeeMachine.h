@@ -1,6 +1,6 @@
 #pragma once
 
-#include "interface/IFilterCoffeeMachine.h"
+#include "interface/ICoffeeMachine.h"
 #include "util/CoffeeDrink.hpp"
 #include "util/Configuration.h"
 #include "util/GroundCoffee.hpp"
@@ -9,7 +9,7 @@
 
 #include <map>
 
-class BasicCoffeeMachine : public IFilterCoffeeMachine
+class BasicCoffeeMachine : public ICoffeeMachine
 {
 public:
   explicit BasicCoffeeMachine(std::map<CoffeeSelection, GroundCoffee>& t_coffee);

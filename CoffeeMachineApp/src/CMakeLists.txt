@@ -1,11 +1,11 @@
 add_executable(${PROJECT_NAME}
   main.cpp
-  BasicCoffeeMachine.cpp
-  PremiumCoffeeMachine.cpp
+  models/BasicCoffeeMachine.cpp
+  models/PremiumCoffeeMachine.cpp
 )
 
 target_include_directories(${PROJECT_NAME}
-  PRIVATE util
+  PRIVATE ${PROJECT_SOURCE_DIR}/src
 )
 
 target_compile_features(${PROJECT_NAME}
