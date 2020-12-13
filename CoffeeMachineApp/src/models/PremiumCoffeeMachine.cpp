@@ -50,7 +50,7 @@ std::optional<CoffeeDrink> PremiumCoffeeMachine::brewSelectedCoffee(const Coffee
 
   std::optional<CoffeeBean> coffeeBean = helper::try_find(selection, mBeans);
 
-  if (all_of{config.has_value(), coffeeBean.has_value()})
+  if (config && coffeeBean)
   {
     GroundCoffee groundCoffee = mGrinder.grind(coffeeBean.value(), config.value().getCoffeeQuantity());
 
