@@ -27,7 +27,8 @@ private:
 int main(int argc, char ** argv)
 {
   static plog::ConsoleAppender<plog::TxtFormatter> consoleAppender;
-  plog::init(plog::debug, "").addAppender(&consoleAppender);
+  // plog::init(plog::debug, "").addAppender(&consoleAppender);
+  plog::init(plog::debug, &consoleAppender);
 
   PLOGI << "Starting CoffeeMachineApp";
   // auto groundCoffee = std::map<CoffeeSelection, GroundCoffee>{ {CoffeeSelection::FILTER_COFFEE, GroundCoffee("My favorite filter coffee bean", 1000)} };
