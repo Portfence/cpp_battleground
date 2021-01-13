@@ -6,6 +6,12 @@ target_compile_features(${PROJECT_NAME}
   PRIVATE cxx_std_20
 )
 
+target_compile_options(${PROJECT_NAME}
+  PRIVATE -Wall
+  PRIVATE -Wextra
+  PRIVATE -pedantic
+)
+
 target_link_libraries(${PROJECT_NAME}
   # PRIVATE MyLibrary::MyLibrary
 )
