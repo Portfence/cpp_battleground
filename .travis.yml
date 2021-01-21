@@ -1,7 +1,8 @@
-dist: trusty
-sudo: false
 language: cpp
+dist: bionic
+compiler:
+ - gcc
 
 script:
-- cmake . -Bbuild
-- cmake --build build -- -j2
+ - cmake . -Bbuild
+ - cmake --build build -- -j2
