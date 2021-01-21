@@ -30,8 +30,8 @@ int main()
   //   node.key() = "uno";
   //   myMap.insert(std::move(node));
   // }
-  Rectangle r;
-  DrawableRectangle dr(r);
-  Canvas c;
-  dr.draw(c);
+  // Rectangle r;
+  // DrawableRectangle dr(r);
+  // Canvas c;
+  // dr.draw(c);
 }

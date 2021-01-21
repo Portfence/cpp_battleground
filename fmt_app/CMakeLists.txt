@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.16.8 FATAL_ERROR)
 project(FmtApp LANGUAGES CXX)
 
 find_package(fmt CONFIG REQUIRED)
