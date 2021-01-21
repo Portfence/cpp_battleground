@@ -11,7 +11,7 @@ target_compile_options(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME}
-  PRIVATE fmt::fmt-header-only
+  PRIVATE fmt::fmt
 )
 
 set_target_properties(${PROJECT_NAME}
