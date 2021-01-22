@@ -4,5 +4,12 @@ compiler:
  - gcc
 
 script:
+ - git clone https://github.com/TartanLlama/expected.git
+ - cd expected
+ - cmake . -Bbuild
+ - sudo make install -C build
+ - cd ..
+ - git clone https://github.com/rollbear/dry-comparisons.git
+ - cp dry-comparisons/dry-comparisons.hpp /usr/local/include/
  - cmake . -Bbuild
  - cmake --build build -- -j2
