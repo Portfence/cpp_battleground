@@ -10,6 +10,12 @@ script:
  - sudo make install -C build
  - cd ..
  - git clone https://github.com/rollbear/dry-comparisons.git
- - cp dry-comparisons/dry-comparisons.hpp /usr/local/include/
+ - sudo cp dry-comparisons/dry-comparisons.hpp /usr/local/include/
+ - git clone https://github.com/fmtlib/fmt.git
+ - cd fmt
+ - cmake . -Bbuild
+ - cmake --build build
+ - sudo make install -C build
+ - cd ..
  - cmake . -Bbuild
  - cmake --build build -- -j2
