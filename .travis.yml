@@ -10,7 +10,8 @@ script:
  - sudo make install -C build
  - cd ..
  - git clone https://github.com/rollbear/dry-comparisons.git
- - sudo cp dry-comparisons/dry-comparisons.hpp /usr/local/include/
+ - sudo mkdir /usr/local/include/dry-comparisons/
+ - sudo cp dry-comparisons/dry-comparisons.hpp /usr/local/include/dry-comparisons/dry-comparisons.hpp
  - git clone https://github.com/fmtlib/fmt.git
  - cd fmt
  - cmake . -Bbuild -DFMT_TEST=OFF
