@@ -20,5 +20,6 @@ script:
  - git clone https://github.com/SergiusTheBest/plog.git
  - cd plog
  - cmake . -Bbuild -DPLOG_BUILD_SAMPLES=OFF
+ - cd ..
  - cmake . -Bbuild
  - cmake --build build -- -j2
