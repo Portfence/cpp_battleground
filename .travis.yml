@@ -1,0 +1,24 @@
+language: cpp
+dist: focal
+compiler:
+ - gcc
+
+script:
+ - git clone https://github.com/TartanLlama/expected.git
+ - cd expected
+ - cmake . -Bbuild -DEXPECTED_BUILD_TESTS=OFF
+ - sudo make install -C build
+ - cd ..
+ - git clone https://github.com/rollbear/dry-comparisons.git
+ - sudo cp dry-comparisons/dry-comparisons.hpp /usr/local/include/
+ - git clone https://github.com/fmtlib/fmt.git
+ - cd fmt
+ - cmake . -Bbuild -DFMT_TEST=OFF
+ - cmake --build build
+ - sudo make install -C build
+ - cd ..
+ - git clone https://github.com/SergiusTheBest/plog.git
+ - cd plog
+ - cmake . -Bbuild -DPLOG_BUILD_SAMPLES=OFF
+ - cmake . -Bbuild
+ - cmake --build build -- -j2
