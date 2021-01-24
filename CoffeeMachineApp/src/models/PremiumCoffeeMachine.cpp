@@ -2,7 +2,7 @@
 #include "helper/try_find.hpp"
 
 #include <plog/Log.h>
-#include <dry-comparisons.hpp>
+#include <dry-comparisons/dry-comparisons.hpp>
 
 using rollbear::all_of;
 

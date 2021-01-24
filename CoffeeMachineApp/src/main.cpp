@@ -3,6 +3,8 @@
 
 #include <plog/Log.h>
 #include <plog/Appenders/ConsoleAppender.h>
+#include <plog/Formatters/TxtFormatter.h>
+#include <plog/Initializers/RollingFileInitializer.h>
 
 class CoffeeApp
 {

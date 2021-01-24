@@ -8,7 +8,7 @@
  */
 #include <iostream>
 #include <boost/assign/std/vector.hpp>
-#include <dry-comparisons.hpp>
+#include <dry-comparisons/dry-comparisons.hpp>
 #include <optional>
 #include <tl/expected.hpp>
 
