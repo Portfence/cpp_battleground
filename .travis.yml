@@ -3,7 +3,7 @@ dist: focal
 compiler:
  - gcc
 
- before_install: 
+before_install: 
   - sudo apt update
   - sudo apt -y install libboost1.71-dev
 
