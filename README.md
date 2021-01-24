@@ -1,7 +1,10 @@
-# cpp_battleground
+# CPP Battleground
 Repository for testing and storing concepts GATHERED FROM OTHERS.
 
-Contains:
+## Build Status
+[![Build Status](https://travis-ci.org/Portfence/cpp_battleground.svg?branch=master)](https://travis-ci.org/Portfence/cpp_battleground)
+
+## Contents
 * async_thread_app
 * lambda_functor_app
 * loopers_and_dispatchers_app
