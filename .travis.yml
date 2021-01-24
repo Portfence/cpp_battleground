@@ -3,6 +3,10 @@ dist: focal
 compiler:
  - gcc
 
+ before_install: 
+  - sudo apt update
+  - sudo apt -y install libboost1.71-dev
+
 script:
  - git clone https://github.com/TartanLlama/expected.git
  - cd expected
